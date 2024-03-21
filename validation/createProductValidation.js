@@ -1,11 +1,13 @@
 function createProductValidation(props) {
-  if (!props?.title?.trim()) {
-    throw new Error('Title is required. Please check if it is provided.');
-  }
-}
+  if (typeof props?.title !== 'string' || !props?.title?.trim())
+    throw new Error(
+      'Title is required. Please check if it is string and provided.'
+    );
 
-if (!props?.description?.trim()) {
-  throw new Error('description is required. Please check if it is provided.');
+  if (typeof props?.description !== 'string' || !props?.description?.trim())
+    throw new Error(
+      'Description is required. Please check if it is string and provided.'
+    );
 }
 
 module.exports = { createProductValidation };
