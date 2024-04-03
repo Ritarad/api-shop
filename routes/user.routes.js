@@ -1,12 +1,11 @@
 const { Router } = require('express');
-const { createProduct, updateProduct } = require('../controllers');
+const { registerUser, loginUser } = require('../controllers');
 
 const router = Router();
 
-// POST /product
 router.post('/', async (req, res) => {
   try {
-    const data = await createProduct(req.body);
+    const data = await registerUser(req.body);
     res.status(201).json(data);
   } catch (error) {
     console.log(`Error: ${error.message}`);
@@ -14,11 +13,11 @@ router.post('/', async (req, res) => {
   }
 });
 
-// PATCH /product/:id
-router.patch('/:id', async (req, res) => {
+// POST /user/login
+router.post('/login', async (req, res) => {
   try {
-    const data = await updateProduct(reg.params.id, reg.body);
-    res.json(data);
+    const data = await loginUser(req.body);
+    res.status(201).json(data);
   } catch (error) {
     console.log(`Error: ${error.message}`);
     res.status(400).json({ error: error.message });
