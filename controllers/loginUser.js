@@ -17,7 +17,7 @@ async function loginUser(user) {
   if (!match) throw new Error('username or password is incorrect');
 
   const token = jwt.sign({ username }, process.env.JWT_SECRET, {
-    expiresIn: '1m',
+    expiresIn: '2h',
   });
 
   return { token };
